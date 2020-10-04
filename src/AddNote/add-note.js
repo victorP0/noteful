@@ -3,6 +3,7 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import ErrorPage from '../ErrorBoundary/ErrorPage'
+import PropTypes from 'prop-types'
 
 import './AddNote.css'
 
@@ -93,4 +94,18 @@ export default class AddNote extends Component {
       </section>
     )
   }
+}
+
+AddNote.defaultProps = {
+    name: "",
+    content: "",
+    folderId: "",
+    modified: ""
+}
+
+AddNote.propTypes ={
+    name: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    folderId: PropTypes.string.isRequired,
+    modified: PropTypes.date
 }
