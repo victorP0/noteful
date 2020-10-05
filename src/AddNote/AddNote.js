@@ -17,14 +17,21 @@ export default class AddNote extends Component {
 
   validateName = (name) => {
       if (name.trim ===""){
-          alert ('Note Name cannot be blank')
+          alert ('Note name cannot be blank')
       }
   }
+
+  validateContent = (content) => {
+    if (content.trim ===""){
+        alert ('Note content cannot be blank')
+    }
+}
 
   handleSubmit = e => {
     e.preventDefault()
     const noteName = e.target['note-name'].value
-    if (noteName.trim !==""){
+    const noteContent = e.target['note-content'].value
+    if (noteName.trim !=="" && noteContent.trim !==""){
     const newNote = {
       name: e.target['note-name'].value,
       content: e.target['note-content'].value,
@@ -69,7 +76,7 @@ export default class AddNote extends Component {
             <label htmlFor='note-content-input'>
               Content
             </label>
-            <textarea id='note-content-input' name='note-content' />
+            <textarea id='note-content-input' name='note-content' onChange={e => this.validateContent(e.target.value)}/>
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>

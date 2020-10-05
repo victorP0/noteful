@@ -16,8 +16,15 @@ export default class AddFolder extends Component {
 
   static contextType = ApiContext;
 
+  validateFolder = (folder) => {
+    if (folder.trim ===""){
+        alert ('Folder name cannot be blank')
+    }
+}
+
   handleSubmit = e => {
     e.preventDefault()
+    if (e.target['folder-name'].value !==""){
     const folder = {
       name: e.target['folder-name'].value
     }
@@ -39,7 +46,7 @@ export default class AddFolder extends Component {
       })
       .catch(error => {
         console.error({ error })
-      })
+      })}
   }
 
   render() {
@@ -52,7 +59,7 @@ export default class AddFolder extends Component {
             <label htmlFor='folder-name-input'>
               Name
             </label>
-            <input type='text' id='folder-name-input' name='folder-name' />
+            <input type='text' id='folder-name-input' name='folder-name' onChange={e => this.validateFolder(e.target.value)}/>
           </div>
           <div className='buttons'>
             <button type='submit'>
