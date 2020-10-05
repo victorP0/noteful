@@ -112,7 +112,7 @@ AddNote.defaultProps = {
 
 AddNote.propTypes ={
     name: PropTypes.string.isRequired,
-    content: PropTypes.string,
+    content: PropTypes.string.isRequired,
     folderId: PropTypes.string.isRequired,
     modified: PropTypes.date
 }
