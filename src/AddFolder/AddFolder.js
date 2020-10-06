@@ -59,7 +59,7 @@ export default class AddFolder extends Component {
             <label htmlFor='folder-name-input'>
               Name
             </label>
-            <input type='text' id='folder-name-input' name='folder-name' onChange={e => this.validateFolder(e.target.value)}/>
+            <input type='text' id='folder-name-input' name='folder-name' onChange={e => this.validateFolder(e.target.value)} required/>
           </div>
           <div className='buttons'>
             <button type='submit'>

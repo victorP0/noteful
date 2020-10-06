@@ -8,6 +8,14 @@ import PropTypes from 'prop-types'
 import './AddNote.css'
 
 export default class AddNote extends Component {
+
+constructor(){
+  super();
+  this.state = {
+    name: "",
+  }
+}
+
   static defaultProps = {
     history: {
       push: () => { }
@@ -21,17 +29,11 @@ export default class AddNote extends Component {
       }
   }
 
-  validateContent = (content) => {
-    if (content.trim ===""){
-        alert ('Note content cannot be blank')
-    }
-}
 
   handleSubmit = e => {
     e.preventDefault()
     const noteName = e.target['note-name'].value
-    const noteContent = e.target['note-content'].value
-    if (noteName.trim !=="" && noteContent.trim !==""){
+    if (noteName.trim !==""){
     const newNote = {
       name: e.target['note-name'].value,
       content: e.target['note-content'].value,
@@ -70,13 +72,13 @@ export default class AddNote extends Component {
             <label htmlFor='note-name-input'>
               Name
             </label>
-            <input type='text' id='note-name-input' name='note-name' onChange={e => this.validateName(e.target.value)}/>
+            <input type='text' id='note-name-input' name='note-name' value = {this.state.name} onChange={e => this.setState({ name: e.target.value})} required/>
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
               Content
             </label>
-            <textarea id='note-content-input' name='note-content' onChange={e => this.validateContent(e.target.value)}/>
+            <textarea id='note-content-input' name='note-content' />
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>
